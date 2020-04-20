@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışveris Listesi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color:darksalmon
+        }
+        ul li.checked{
+            background: #888;
+            color: #fff;
+            text-decoration: line-through;
+        }
+        .close{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px 12px 16px;
+
+        }
+        h1{
+            font-size: 80px;
+            color: blue;
+            font-style: italic;
+            text-align:center;
+            font-weight:400;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Alışveriş Listesi</h1>
+        <br>
+        <hr>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" id="txtItem" class="form-control" title="title">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type=button id="btnCreate">Ekle</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        Listeye Eklenen Ürünler
+                        <p>Listeden Ürün Çıkarabilir veya Ekleyebilirsiniz...</p>
+                    </div>
+                    <ul id="mylist" class="list-group list-group-flush">
+                        
+                    </ul>
+                    
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    
+    <script>
+        var items=['Ekmek', 'Şeker' ,'Su'];
+
+        var list=document.querySelector('#mylist');
+       
+        items.forEach(function(item){
+            CreateItem(item);
+            
+        });
+
+        list.addEventListener('click', function(item){
+            if(item.target.tagName='li'){
+                item.target.classList.toggle('checked');
+            }
+
+        });
+        document.querySelector('#btnCreate').onclick=function(){
+            var item= document.querySelector('#txtItem').value;
+            
+            if(item===''){
+
+            alert('Lütfen bir değer giriniz..');
+            return;
+            }
+            CreateItem(item);
+
+        };
+        function CreateItem(item){
+            var li=document.createElement('li');
+            var t=document.createTextNode(item);
+
+            li.className='list-group-item';
+            li.appendChild(t);
+            list.appendChild(li);
+
+            var span=document.createElement('span');
+            var text=document.createTextNode('\u00D7');
+            span.className='close';
+            span.appendChild(text);
+            li.appendChild(span);
+
+            span.onclick=function(){
+                var li=this.parentElement;
+                li.style.display='none';
+
+            }
+
+        }
+
+       
+
+        
+        
+
+    </script>
+</body>
+</html>

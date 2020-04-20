@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt2YNXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body{
+            background-color:darksalmon
+        }
+        button{
+            width: 80px;
+            height: 40px;
+            color: black;
+            font-weight: bold;
+            
+        }
+        button:hover{
+            background-color: gray;
+        }
+        p{
+            font-weight: bold;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <div class="container mt-3" id="DivParent">
+        <hr>
+        <p id="p1">Angular JS</p>
+        <hr>
+        <p id="p2">React JS</p>
+        <hr>
+        <p id="p3">Vue JS</p>
+        <hr>
+        <p id="p4">Node JS</p>
+        <hr>
+
+    </div>
+    <div class="container mt-3">
+        <button type="button" class="btn btn-dark" onClick="javascript:createElementDOM()">Element Ekle</button>
+        <button type="button" class="btn btn-dark" onClick="javascript:removeElementDOM()">Element Kaldır</button>
+        <button type="button" class="btn btn-dark" onClick="javascript:replaceElementDOM()">Element Değiştir</button>
+    </div>
+    <hr>
+    <br>
+    <ul>
+        <li><strong>Element Ekleme:</strong>Bu işlemde React ve Vue arasına element eklenmiştir.</li>
+        <li><strong>Element Kaldır:</strong>Bu işlemde Vue Js alanı kaldırılmıştır.</li>
+        <li><strong>Element Değiştir:</strong>Bu İşlemde Angular Js yerine Javascript ifadesi getirilmiştir.</li>
+    </ul>
+    <script>
+
+        var parentDiv=document.querySelector('#DivParent');
+        var p1=document.querySelector('#p1')
+        
+        
+        function createElementDOM(){
+            var p=document.createElement("p");
+            var text=document.createTextNode("Ekleme İşlemi");
+            p.appendChild(text);
+            parentDiv.insertBefore(p,p3);
+           
+        }
+        function removeElementDOM(){
+            parentDiv.removeChild(p3);
+        }
+        function replaceElementDOM(){
+            var p=document.createElement("p");
+            var text=document.createTextNode("Javascript");
+            p.appendChild(text);
+            parentDiv.replaceChild(p,p1);
+
+        }
+    </script>
+    
+</body>
+</html>

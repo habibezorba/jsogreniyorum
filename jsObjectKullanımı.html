@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <div>
+            <div class="logo"></div>
+        <div class="banner">
+            <h2 >BİLGİSAYAR MÜHENDİSLİĞİ</h2>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Anasayfa</a> </li>
+                <li><a href="hakkimda.html">Hakkımızda</a> </li>
+                <li><a href="iletisim.html">İletişim</a> 
+            </ul>
+        </div>
+        <div class="sosyal">
+            <a href=""><img src="img/linkedin-icon.png"  width="70px"  height="70px" alt=""></a>
+            <a href=""><img src="img/twitter-icon.png" width="70px"  height="70px" alt=""></a>
+            <a href=""><img src="img/facebook-icon.png" width="70px"  height="70px" alt=""></a>
+         </div>
+         <div class="orta16acıklama">
+             <h2>JAVASCRIPT NESNE KULLANIMI </h2>
+             <p>
+                Javascript dünyası her ne kadar client taraflı uygulamalar için geliştirilmiş bir dil olsa da kullanıcılara nesnelerin tanımlanabildiği ve kullanılabildiği bir ortam sunmaktadır. Javscript içerisinde tanımlı kendine ait bazı nesneleri şu şeklide sıralayabiliriz;
+             </p>
+             <ol>
+                 <li> String</li>
+                 <li>Date</li>
+                 <li>Mantıksal operatörler</li>
+                 <li>Math</li>
+                 <li>JSON vs. Bu nesnelerin yanında kendimiz de nesneler tanımlayıp kullanabiliriz.</li>
+             </ol>
+             <h2>Nesne Oluşturulması</h2>
+             <p>Javascript, standart olarak Object adında bir nesne sunar. Oluşturulan nesneler de Object türündedir. Örneğin bir nesnenin oluşturulmasını şu şekilde yapabiliriz;</p>
+            <pre>
+                var bankAccount = new Object();
+            </pre>
+            <p>Bu şekilde herhangi bir üyesi bulunmayan ve sadece “Object” tipine ait üyeleri barındıran bir bankAccount nesnesi oluşturmuş olduk. Bu nesneyi daha basit bir şekilde aşağıdaki gibi tanımlayabiliriz.</p>
+            <pre>
+                var bankAccount = {};
+            </pre>
+            <p>Yani Object anahtar kelimesini kullanmadan da tanımlama yapmak mümkündür.</p>
+            <h2>Nesnelere Property Eklenmesi</h2>
+            <p>Oluşturduğumuz nesnelere property eklenmesi işlemini aşağıdaki şeklide gerçekleştirebiliriz.</p>
+            <pre>
+                var bankAccount = {};
+                bankAccount.number = 114521;
+            </pre>
+            <p>Nesnelere bir değer veya fonksiyonu property olarak belirleyebiliriz. Bir property eğer bir fonksiyonu işaret ediyorsa ona metod diyebiliriz.</p>
+            <pre>
+                var bankAccount = {};
+                bankAccount.number = 114521;
+                bankAccount.owner = "Bayram Üçüncü";
+                bankAccount.balance = 500;
+                bankAccount.details = function () {
+                return "Account: " + this.number + " belongs to " + this.owner + "\nBalance: " + this.balance;
+                };
+            </pre>
+            <p>Yukarıda tanımladığımız bankAccount nesnesine ait “details” isimli property bir metoddur. Metodlar içerisinde kullanılan "this" anahtar kelimesi metodun ait olduğu nesneyi ifade eder. Bu sebeple yukaridaki "details" metodu içerisinden diğer üyelere "this" anahtar kelimesi ile ulaşabilmekteyiz. Metod içerisinden "this" anahtar kelimesini kullanmadan bir üyeye erişmeye çalışırsak hata ile karşılaşırız.</p>
+            <h2>Nesnelerin Prototiplerinin Kullanılması</h2>
+            <p>Javascript Object tipinde bulunan "prototype" adlı özel bir metod, tüm nesnelerde bulunur. Bu metod sayesinde nesnelere yeni property veya metodlar ekleyebilirsiniz. Constructor fonksiyonları ile kendi özel tiplerimizi oluşturmamız mümkündür. Oluşturduğumuz tipe ait iki farklı nesne örneği oluşturacağımızda her bir nesne örneği kendi property kümesini bünyesinde barındırır. Bu durum, veri tutucu property’ler için makul görünse de metodlar için bir sorun haline gelebilir. Metodlarımızı oluşturduğumuz tip içerisinden ayırabiliriz.</p>
+             <p><strong>Prototype kullanılmadan;</strong></p> 
+             <pre>
+                var Rectagle = function (x,y) {
+                    this.x = x;
+                    this.y = y;
+                    this.Area = function() { return x*y; };
+                    };
+             </pre>
+            <p><strong> Prototype kullanarak;</strong></p>
+            <pre>
+                var Rectangle = function (x, y) {
+                    this.x = x;
+                    this.y = y;
+                    };
+                    
+                    Rectangle.prototype = {
+                    Area: function() { return (this.x * this.y); }
+                    };
+            </pre>
+
+         </div>
+        </div>
+    </div>
+    
+</body>
+</html>
